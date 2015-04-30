@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Set some basic project information and targets -->
+<project name="The HRPHP Framework" default="build" basedir=".">
+
+    <property name="bin.dir" value="${project.basedir}/vendor/bin" override="true" />
+    <property name="reports.dir" value="${project.basedir}/reports" override="true" />
+
+    <!-- Run tests -->
+    <target name="build"
+            depends="clean, prepare, phpcs, phpunit" />
+
+    <!-- Clean up from previous builds -->
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${reports.dir}" />
+    </target>
+
+    <!-- Prepare for the new build -->
+    <target name="prepare" description="Prepare for build" depends="clean">
+        <mkdir dir="${reports.dir}" />
+    </target>
+
+    <!-- PHP Code Sniffer -->
+    <target name="phpcs" description="Check code style with PHP Code Sniffer">
+        <echo msg="Checking code against PSR2 standard..." />
+        <exec command="${bin.dir}/phpcs --standard=PSR2 --extensions=php src > ${reports.dir}/phpcs.log"
+              checkreturn="true" />
+    </target>
+
+    <!-- PHPUnit -->
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <echo msg="Running tests in test suite..." />
+        <exec command="${bin.dir}/phpunit --coverage-clover ${reports.dir}/clover.xml tests"
+              checkreturn="true" />
+    </target>
+
+</project>
