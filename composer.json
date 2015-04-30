@@ -1,0 +1,24 @@
+{
+  "name": "hrphp/hrphp-framework",
+  "description": "A tutorial project for developers interested in learning more about PHP web development frameworks.",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "~1.5",
+    "phpunit/phpunit": "~4.0",
+    "phing/phing": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hrphp\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "HrphpTest\\": "tests/library"
+    }
+  }
+}
