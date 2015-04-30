@@ -100,6 +100,7 @@ class Application
      * @param string $pattern
      * @param callable $callable
      * @param array $validationRules
+     * @return Application
      */
     public function addRoute($httpMethod, $pattern, callable $callable, array $validationRules = [])
     {
@@ -108,6 +109,7 @@ class Application
             $route->setValidationRules($validationRules);
         }
         $this->routes[] = $route;
+        return $this;
     }
 
     protected function init()
