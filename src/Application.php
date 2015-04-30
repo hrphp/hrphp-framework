@@ -60,7 +60,7 @@ class Application
     }
 
     /**
-     *
+     * Run it!
      */
     public function run()
     {

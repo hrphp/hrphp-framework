@@ -8,8 +8,11 @@
 
 namespace Hrphp\Http;
 
-
+/**
+ * Response Interface
+ *
+ * @package Hrphp\Http
+ */
 interface ResponseInterface
 {
-
 }

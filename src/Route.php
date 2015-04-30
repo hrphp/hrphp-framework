@@ -8,6 +8,12 @@
 
 namespace Hrphp;
 
+/**
+ * Route
+ *
+ * @package Hrphp
+ * @author Guillermo A. Fisher <me@guillermoandraefisher.com>
+ */
 class Route
 {
     /**

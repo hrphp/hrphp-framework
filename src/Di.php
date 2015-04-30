@@ -8,15 +8,32 @@
 
 namespace Hrphp;
 
+/**
+ * DI Container
+ *
+ * @package Hrphp
+ * @author Guillermo A. Fisher <me@guillermoandraefisher.com>
+ */
 class Di
 {
+    /**
+     * @var array
+     */
     private static $registry;
 
+    /**
+     * @param string $offset
+     * @param mixed $value
+     */
     public static function set($offset, $value)
     {
         self::$registry[$offset] = $value;
     }
 
+    /**
+     * @param string $offset
+     * @return mixed
+     */
     public static function get($offset)
     {
         if (array_key_exists($offset, self::$registry)) {
@@ -24,11 +41,18 @@ class Di
         }
     }
 
+    /**
+     * @param string $offset
+     * @return bool
+     */
     public static function exists($offset)
     {
         return array_key_exists($offset, self::$registry);
     }
 
+    /**
+     * @param string $offset
+     */
     public static function remove($offset)
     {
         unset(self::$registry[$offset]);

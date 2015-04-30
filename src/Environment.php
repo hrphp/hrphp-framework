@@ -8,8 +8,17 @@
 
 namespace Hrphp;
 
+/**
+ * Environment
+ *
+ * @package Hrphp
+ * @author Guillermo A. Fisher <me@guillermoandraefisher.com>
+ */
 class Environment implements \ArrayAccess
 {
+    /**
+     * @var array
+     */
     private $environment = [
         'REQUEST_METHOD' => 'GET',
         'SCRIPT_NAME' => '',
@@ -25,6 +34,9 @@ class Environment implements \ArrayAccess
         'REQUEST_TIME' => ''
     ];
 
+    /**
+     * @param array $options
+     */
     public function __construct(array $options = [])
     {
         if (!array_key_exists('REQUEST_TIME', $_SERVER)) {
@@ -39,11 +51,19 @@ class Environment implements \ArrayAccess
         }
     }
 
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     */
     public function offsetSet($offset, $value)
     {
         $this->environment[$offset] = $value;
     }
 
+    /**
+     * @param mixed $offset
+     * @return mixed
+     */
     public function offsetGet($offset)
     {
         if (array_key_exists($offset, $this->environment)) {
@@ -51,11 +71,18 @@ class Environment implements \ArrayAccess
         }
     }
 
+    /**
+     * @param mixed $offset
+     * @return bool
+     */
     public function offsetExists($offset)
     {
         return array_key_exists($offset, $this->environment);
     }
 
+    /**
+     * @param mixed $offset
+     */
     public function offsetUnset($offset)
     {
         unset($this->environment[$offset]);

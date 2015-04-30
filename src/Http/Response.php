@@ -8,7 +8,12 @@
 
 namespace Hrphp\Http;
 
+/**
+ * Response
+ *
+ * @package Hrphp\Http
+ * @author Guillermo A. Fisher <me@guillermoandraefisher.com>
+ */
 class Response implements ResponseInterface
 {
-
 }

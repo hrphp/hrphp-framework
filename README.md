@@ -1,6 +1,11 @@
-# hrphp-framework
+# The HRPHP Framework
 A tutorial project for developers interested in learning more about PHP web development frameworks.
 
+## Overview
+PHP web frameworks are ubiquitous. Using one can boost productivity. Writing one can teach you a lot about PHP, the web, and software engineering. The aim here is to build a micro-framework -- something lightweight with just enough functionality to allow a developer to build powerful applications.
+
+## Getting started
+The proposed routing mechanism is inspired by [Slim](http://www.slimframework.com/).
 
 ```php
 // instantiate the app

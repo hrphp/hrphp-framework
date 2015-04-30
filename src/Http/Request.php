@@ -8,7 +8,12 @@
 
 namespace Hrphp\Http;
 
+/**
+ * Class Request
+ *
+ * @package Hrphp\Http
+ * @author Guillermo A. Fisher <me@guillermoandraefisher.com>
+ */
 class Request
 {
-
 }
