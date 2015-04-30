@@ -8,43 +8,29 @@
 
 namespace Hrphp;
 
-class Di implements \ArrayAccess
+class Di
 {
-    private static $instance;
+    private static $registry;
 
-    private $registry;
-
-    public static function getInstance()
+    public static function set($offset, $value)
     {
-        if (!self::$instance) {
-            self::$instance = new self();
-        }
-        return self::$instance;
+        self::$registry[$offset] = $value;
     }
 
-    public function offsetSet($offset, $value)
+    public static function get($offset)
     {
-        $this->registry[$offset] = $value;
-    }
-
-    public function offsetGet($offset)
-    {
-        if (array_key_exists($offset, $this->environment)) {
-            return $this->registry[$offset];
+        if (array_key_exists($offset, self::$registry)) {
+            return self::$registry[$offset];
         }
     }
 
-    public function offsetExists($offset)
+    public static function exists($offset)
     {
-        return array_key_exists($offset, $this->registry);
+        return array_key_exists($offset, self::$registry);
     }
 
-    public function offsetUnset($offset)
+    public static function remove($offset)
     {
-        unset($this->registry[$offset]);
-    }
-
-    protected function __construct()
-    {
+        unset(self::$registry[$offset]);
     }
 }

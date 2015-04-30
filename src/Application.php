@@ -8,6 +8,17 @@
 
 namespace Hrphp;
 
+/**
+ * Application
+ *
+ * @todo Add methods for head, put, delete, options
+ * @todo Add descriptions to the docblocks
+ * @todo Add code for the run method
+ * @todo Integrate the HTTP request and response
+ *
+ * @package Hrphp
+ * @author Guillermo A. Fisher <me@guillermoandraefisher.com>
+ */
 class Application
 {
     /**
@@ -23,9 +34,13 @@ class Application
     /**
      * @param Environment $environment
      */
-    public function __construct(Environment $environment)
+    public function __construct(Environment $environment = null)
     {
+        if (!$environment) {
+            $environment = new Environment();
+        }
         $this->setEnvironment($environment);
+        $this->init();
     }
 
     /**
@@ -65,7 +80,7 @@ class Application
      * @param callable $callable
      * @param array $validationRules
      */
-    public function get($pattern, callable $callable, array $validationRules)
+    public function get($pattern, callable $callable, array $validationRules = [])
     {
         $this->addRoute('GET', $pattern, $callable, $validationRules);
     }
@@ -75,7 +90,7 @@ class Application
      * @param callable $callable
      * @param array $validationRules
      */
-    public function post($pattern, callable $callable, array $validationRules)
+    public function post($pattern, callable $callable, array $validationRules = [])
     {
         $this->addRoute('POST', $pattern, $callable, $validationRules);
     }
@@ -93,5 +108,10 @@ class Application
             $route->setValidationRules($validationRules);
         }
         $this->routes[] = $route;
+    }
+
+    protected function init()
+    {
+        Di::set('environment', $this->getEnvironment());
     }
 }

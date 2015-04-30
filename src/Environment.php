@@ -21,17 +21,21 @@ class Environment implements \ArrayAccess
         'ACCEPT_LANGUAGE' => 'en-US,en;q=0.8',
         'ACCEPT_CHARSET' => 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
         'USER_AGENT' => 'HRPHP Framework',
-        'REMOTE_ADDR' => '127.0.0.1'
+        'REMOTE_ADDR' => '127.0.0.1',
+        'REQUEST_TIME' => ''
     ];
 
     public function __construct(array $options = [])
     {
+        if (!array_key_exists('REQUEST_TIME', $_SERVER)) {
+            $_SERVER['REQUEST_TIME'] = time();
+        }
         foreach ($_SERVER as $key => $value) {
-            $newValue = filter_input(INPUT_SERVER, $key);
+            $envValue = $value;
             if (array_key_exists($key, $options)) {
-                $newValue = $options[$value];
+                $envValue = $options[$key];
             }
-            $this->environment[$key] = $newValue;
+            $this->environment[$key] = $envValue;
         }
     }
 
