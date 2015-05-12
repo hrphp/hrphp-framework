@@ -1,5 +1,6 @@
 # The HRPHP Framework
 [![Build Status](http://img.shields.io/travis/hrphp/hrphp-framework.svg?style=flat)](https://travis-ci.org/hrphp/hrphp-framework)
+[![Code Coverage](http://img.shields.io/coveralls/hrphp/hrphp-framework.svg?style=flat)](https://coveralls.io/r/hrphp/hrphp-framework)
 
 A tutorial project for developers interested in learning more about PHP web development frameworks.
 
