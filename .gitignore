@@ -4,4 +4,4 @@ composer.phar
 .DS_Store
 
 vendor
-reports
+clover.xml
