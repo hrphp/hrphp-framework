@@ -4,5 +4,5 @@ php:
   - 5.5
   - 5.4
 install: composer install
-script: ./vendor/bin/phing
+script: ./vendor/bin/phpunit
 after_success: ./vendor/bin/coveralls -v
