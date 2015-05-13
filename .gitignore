@@ -2,6 +2,6 @@
 *.iml
 composer.phar
 .DS_Store
-
+clover.xml
 vendor
 reports
