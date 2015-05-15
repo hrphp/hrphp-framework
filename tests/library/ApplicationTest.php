@@ -55,7 +55,12 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
             return 'hi!';
         };
         $expectedValidationRules = array('id' => '[0-9]+');
-        $this->getApplication()->addRoute($expectedHttpMethod, $expectedPattern, $expectedCallback, $expectedValidationRules);
+        $this->getApplication()->addRoute(
+            $expectedHttpMethod,
+            $expectedPattern,
+            $expectedCallback,
+            $expectedValidationRules
+        );
         $this->assertRouteAdded($expectedHttpMethod, $expectedPattern, $expectedCallback, $expectedValidationRules);
     }
 
@@ -64,8 +69,12 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         return $this->application;
     }
 
-    protected function assertRouteAdded($expectedHttpMethod, $expectedPattern, $expectedCallback, array $expectedValidationRules = [])
-    {
+    protected function assertRouteAdded(
+        $expectedHttpMethod,
+        $expectedPattern,
+        $expectedCallback,
+        array $expectedValidationRules = []
+    ) {
         $application = $this->getApplication();
         $application->addRoute($expectedHttpMethod, $expectedPattern, $expectedCallback, $expectedValidationRules);
         $route = $application->getRoutes()[0];
